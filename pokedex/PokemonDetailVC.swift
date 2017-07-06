@@ -30,6 +30,10 @@ class PokemonDetailVC: UIViewController {
 
         // Do any additional setup after loading the view.
         nameLbl.text = pokemon.name
+        pokemon.downloadPokemonDetails {
+            // Whatever we write will only be called after the network call is complete
+            self.updateUI()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +51,15 @@ class PokemonDetailVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func updateUI() {
+        attackLbl.text = pokemon.attack
+        defenseLbl.text = pokemon.defense
+        heightLbl.text = pokemon.height
+        weightLbl.text = pokemon.weight
+        
+    }
+    
+    
     @IBAction func backBtnPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
